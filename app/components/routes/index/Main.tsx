@@ -11,6 +11,8 @@ import {
 } from "@chakra-ui/react";
 import DiscordIcon from "../../layout/icons/DiscordIcon";
 import { config } from "../../config/config";
+import StrokeHeading from "~/components/layout/StrokeHeading";
+import { motion } from "framer-motion";
 
 export default function Main() {
 	return (
@@ -69,21 +71,14 @@ export default function Main() {
 				</VStack>
 				<Image h="250px" src="/texttune.svg" draggable={false} />
 			</Stack>
-			<Heading
-				as={"h1"}
-				fontSize={{ base: "5xl", md: "8xl" }}
-				letterSpacing={"30px"}
-				color="transparent"
-				fontFamily={"body"}
-				textTransform={"uppercase"}
-				fontWeight="black"
-				sx={{ WebkitTextStroke: "0.5px #6b6b6b" }}
-				opacity={0.4}
-				pos={"absolute"}
-				bottom={"-50px"}
+			<motion.div
+				style={{ bottom: "-50px", position: "absolute" }}
+				initial={{ opacity: 0, y: 80 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ ease: config.ease, duration: 1 }}
 			>
-				explore
-			</Heading>
+				<StrokeHeading>Explore</StrokeHeading>
+			</motion.div>
 		</Flex>
 	);
 }

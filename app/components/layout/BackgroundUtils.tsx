@@ -23,7 +23,7 @@ export default function BackgroundUtils() {
 					/>
 				</Flex>
 			</Flex>
-			<Flex pos={"absolute"} zIndex={-1} maxH={"100vh"} w="100%" h="100%">
+			<Flex pos={"absolute"} zIndex={-1} w="100%" h="100%">
 				<Flex
 					w="100%"
 					h="100%"

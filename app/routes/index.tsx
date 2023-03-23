@@ -1,4 +1,5 @@
 import { VStack } from "@chakra-ui/react";
+import About from "~/components/routes/index/About";
 import Main from "~/components/routes/index/Main";
 
 export default function Index() {
@@ -8,9 +9,11 @@ export default function Index() {
 			maxW="1000px"
 			w="100%"
 			mx="auto"
-			justifyContent={"start"}
+			alignItems={"start"}
 		>
 			<Main />
+
+			<About />
 		</VStack>
 	);
 }
