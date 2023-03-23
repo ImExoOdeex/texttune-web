@@ -16,8 +16,8 @@ const styles = {
 		body: {
 			minH: "100vh",
 			bg: mode("bg.100", "bg.900")(props),
-			overflowY: "scroll",
-			overflowX: "hidden"
+			overflowY: "scroll"
+			// overflowX: "hidden"
 		},
 		th: {
 			color: mode("#393942cc!important", "#dedef1be!important")(props)
@@ -33,15 +33,16 @@ const styles = {
 
 const colors = {
 	brand: {
-		100: "#4d4093",
-		200: "#4d4093",
-		300: "#4d4093",
-		400: "#4d4093",
-		500: "#4d4093",
-		600: "#4d4093",
-		700: "#4d4093",
-		800: "#4d4093",
-		900: "#4d4093"
+		"50": "#EFEDF7",
+		"100": "#D2CDE9",
+		"200": "#B5ADDB",
+		"300": "#978DCD",
+		"400": "#7A6DC0",
+		"500": "#5D4DB2",
+		"600": "#5D4DB2",
+		"700": "#5D4DB2",
+		"800": "#5D4DB2",
+		"900": "#5D4DB2"
 	},
 	bg: {
 		100: "#ffffff",

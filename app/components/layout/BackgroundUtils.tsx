@@ -1,7 +1,9 @@
-import { Flex, Image } from "@chakra-ui/react";
+import { Flex, Image, useColorMode } from "@chakra-ui/react";
 import { config } from "../config/config";
 
 export default function BackgroundUtils() {
+	const { colorMode } = useColorMode();
+
 	return (
 		<>
 			<Flex pos={"absolute"} zIndex={-1} maxH={"100vh"} w="100%" h="100%">
@@ -26,7 +28,7 @@ export default function BackgroundUtils() {
 					w="100%"
 					h="100%"
 					bgGradient={`linear(170deg, ${config.color}, transparent)`}
-					opacity={0.1}
+					opacity={colorMode === "light" ? 0.3 : 0.1}
 				/>
 			</Flex>
 		</>

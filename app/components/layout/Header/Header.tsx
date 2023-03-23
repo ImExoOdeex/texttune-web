@@ -12,6 +12,7 @@ import ThemeToggle from "./ToggleTheme";
 import InviteButton from "./InviteButton";
 import { useEffect, useState } from "react";
 import VoteButton from "./VoteButton";
+import Logo from "./Logo";
 
 export default function Header() {
 	useEventListener("keydown", (event: any) => {
@@ -44,7 +45,7 @@ export default function Header() {
 		<Flex
 			as={"header"}
 			w="100%"
-			h={{ base: "60px", md: "80px" }}
+			h={{ base: "60px", md: "70px" }}
 			pos={"sticky"}
 			top={0}
 			backdropFilter={scrollPosition < 0 ? "none" : "blur(20px)"}
@@ -63,31 +64,7 @@ export default function Header() {
 				justifyContent={"space-between"}
 			>
 				<HStack spacing={5}>
-					<Link
-						to="/"
-						alignItems={"center"}
-						_hover={{ textDecor: "none" }}
-						role="group"
-					>
-						<Heading
-							as={"h1"}
-							fontSize="2xl"
-							transition={"all .2s"}
-							transform={"auto-gpu"}
-						>
-							<HStack spacing={3} alignItems={"center"}>
-								<Image
-									src="/texttune.svg"
-									h="28.8px"
-									rotate={"-90deg"}
-									transform="auto-gpu"
-									_groupHover={{ rotate: "0deg" }}
-									transition="transform .4s cubic-bezier(0.25, 0.1, 0.25, 1.25)"
-								/>
-								<Text>Text Tune</Text>
-							</HStack>
-						</Heading>
-					</Link>
+					<Logo />
 				</HStack>
 
 				<HStack spacing={3} display={{ base: "none", lg: "flex" }}>
