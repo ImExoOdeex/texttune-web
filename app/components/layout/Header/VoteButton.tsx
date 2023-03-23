@@ -14,7 +14,7 @@ export default function VoteButton() {
 		>
 			<Flex flexDir={"row"}>
 				<HStack spacing={2}>
-					<Image src="/topgg.svg" h="19px" />
+					<Image src="/topgg.svg" h="19px" alt="top.gg logo" />
 					<Text fontWeight={600}>Vote</Text>
 				</HStack>
 			</Flex>

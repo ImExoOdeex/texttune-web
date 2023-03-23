@@ -67,13 +67,13 @@ export default function Header() {
 					<Logo />
 				</HStack>
 
-				<HStack spacing={3} display={{ base: "none", lg: "flex" }}>
+				<HStack spacing={3} display={{ base: "none", sm: "flex" }}>
 					<ThemeToggle />
 					<VoteButton />
 					<InviteButton />
 				</HStack>
 
-				<HStack spacing={5} display={{ base: "flex", lg: "none" }}>
+				<HStack spacing={5} display={{ base: "flex", sm: "none" }}>
 					<ThemeToggle />
 					<Link
 						href={config.topggVote}
@@ -82,7 +82,11 @@ export default function Header() {
 						alignItems="center"
 						justifyContent={"center"}
 					>
-						<Image src="/topgg.svg" boxSize={"8"} />
+						<Image
+							src="/topgg.svg"
+							boxSize={"8"}
+							alt="top.gg logo"
+						/>
 					</Link>
 					<Link
 						href={config.discordBotInvite}

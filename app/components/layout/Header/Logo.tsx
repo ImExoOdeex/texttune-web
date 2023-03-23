@@ -9,6 +9,7 @@ export default function Logo() {
 	return (
 		<>
 			<Link
+				aria-label="Homepage"
 				to="/"
 				alignItems={"center"}
 				_hover={{ textDecor: "none" }}
@@ -24,7 +25,12 @@ export default function Logo() {
 				>
 					<HStack spacing={3} alignItems={"center"}>
 						<Flex flexDir={"column"} alignItems="center">
-							<Image src="/texttune-kbd.svg" h="25px" w="40px" />
+							<Image
+								src="/texttune-kbd.svg"
+								h="25px"
+								w="40px"
+								alt="text tune keyboard logo"
+							/>
 							<AnimatePresence mode="wait">
 								{hovered && (
 									<motion.div

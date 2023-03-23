@@ -20,6 +20,7 @@ export default function BackgroundUtils() {
 						opacity={0.2}
 						filter={"blur(15px)"}
 						src="/texttune.svg"
+						alt="text tune logo"
 					/>
 				</Flex>
 			</Flex>

@@ -29,19 +29,19 @@ app.all(
   "*",
   process.env.NODE_ENV === "development"
     ? (req, res, next) => {
-        purgeRequireCache();
+      purgeRequireCache();
 
-        return createRequestHandler({
-          build: require(BUILD_DIR),
-          mode: process.env.NODE_ENV,
-        })(req, res, next);
-      }
-    : createRequestHandler({
+      return createRequestHandler({
         build: require(BUILD_DIR),
         mode: process.env.NODE_ENV,
-      })
+      })(req, res, next);
+    }
+    : createRequestHandler({
+      build: require(BUILD_DIR),
+      mode: process.env.NODE_ENV,
+    })
 );
-const port = process.env.PORT || 3000;
+const port = process.env.NODE_ENV === "production" ? process.env.PORT || 3005 : 3000;
 
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);

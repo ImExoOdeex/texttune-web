@@ -29,8 +29,10 @@ import theme from "./components/utils/theme";
 export const meta: MetaFunction = () => ({
 	title: "Text Tune | Gramamr discord bot",
 	robots: "all",
-	description: "",
-	keywords: "",
+	description:
+		"Text Tune discord bot. Spellcheck, grammarcheck, definition, synonyms and more. invite text tune now to your discord server!",
+	keywords:
+		"discord bot, discord, bot, text tune, text, spellcheck, grammar check, grammar, spell, spelling, grammar checking, word definiton, word synonyms, definition, synonyms, slash commands",
 	charset: "utf-8",
 	viewport: "width=device-width,initial-scale=1",
 	author: ".imexoodeex#0528"
@@ -57,20 +59,13 @@ function Document({ children }: { children: React.ReactNode; title?: string }) {
 	}
 
 	const DEFAULT_COLOR_MODE: "dark" | "light" | null = "dark";
-
 	const CHAKRA_COOKIE_COLOR_KEY = "chakra-ui-color-mode";
 
 	let { cookies } = useLoaderData();
-
-	// the client get the cookies from the document
-	// because when we do a client routing, the loader can have stored an outdated value
 	if (typeof document !== "undefined") {
 		cookies = document.cookie;
 	}
-
-	// get and store the color mode from the cookies.
-	// It'll update the cookies if there isn't any and we have set a default value
-	let colorMode = useMemo(() => {
+	const colorMode = useMemo(() => {
 		let color = getColorMode(cookies);
 
 		if (!color && DEFAULT_COLOR_MODE) {

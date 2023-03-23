@@ -40,10 +40,7 @@ export default function About() {
 						<b>Check spelling/grammar</b>
 					</Text>
 					<Box as="video" rounded={"md"} controls autoPlay>
-						<source
-							src="https://cdn.ismcserver.online/Discord_XxIuzZ6Uhu.mp4"
-							type="video/mp4"
-						/>
+						<source src="/discord.mp4" type="video/mp4" />
 						Error Message
 					</Box>
 				</VStack>
@@ -113,7 +110,9 @@ export default function About() {
 				// @ts-ignore
 				transition={{ ease: config.ease, duration: 1 }}
 			>
-				<StrokeHeading textTransform={"none"}>INVITE ^3^</StrokeHeading>
+				<StrokeHeading textTransform={"none"}>
+					INVITE ME ^3^
+				</StrokeHeading>
 			</motion.div>
 		</Flex>
 	);
