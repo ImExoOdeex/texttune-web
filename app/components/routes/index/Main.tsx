@@ -7,12 +7,15 @@ import {
 	Link,
 	Stack,
 	Text,
-	VStack
+	VStack,
+	Wrap
 } from "@chakra-ui/react";
 import DiscordIcon from "../../layout/icons/DiscordIcon";
 import { config } from "../../config/config";
 import StrokeHeading from "~/components/layout/StrokeHeading";
 import { motion } from "framer-motion";
+import { Icon } from "@chakra-ui/react";
+import { BsFillPeopleFill } from "react-icons/bs";
 
 export default function Main() {
 	return (
@@ -27,13 +30,12 @@ export default function Main() {
 				<VStack w="100%" alignItems={"start"} spacing={5}>
 					<Heading fontSize={"5xl"}>Text Tune</Heading>
 					<Text lineHeight={"170%"}>
-						Lorem ipsum dolor sit, amet consectetur adipisicing
-						elit. Repellendus quo, minus autem animi similique
-						aspernatur incidunt nesciunt consequatur ad, illum error
-						veniam praesentium aut, ipsa deleniti voluptatibus
-						asperiores nobis provident.
+						Spell checking, AI powered grammar checking,
+						definitions, synonyms - all in one. Get these
+						functionalities now and be always correct with right
+						spelling or grammar. Do not forget to vote!
 					</Text>
-					<HStack spacing={5}>
+					<Wrap spacing={3} w="100%">
 						<Button
 							as={Link}
 							_hover={{
@@ -59,6 +61,20 @@ export default function Main() {
 							as={Link}
 							rounded="xl"
 							bg={"alpha"}
+							href={config.discordServerInvite}
+							variant={"solid"}
+							_hover={{ textDecor: "none", bg: "alpha100" }}
+						>
+							<HStack spacing={2}>
+								<Icon as={BsFillPeopleFill} />
+								<Text fontWeight={600}>Need help?</Text>
+							</HStack>
+						</Button>
+						<Button
+							as={Link}
+							rounded="xl"
+							bg={"alpha"}
+							href={config.topggVote}
 							variant={"solid"}
 							_hover={{ textDecor: "none", bg: "alpha100" }}
 						>
@@ -67,7 +83,7 @@ export default function Main() {
 								<Text fontWeight={600}>Vote</Text>
 							</HStack>
 						</Button>
-					</HStack>
+					</Wrap>
 				</VStack>
 				<Image h="250px" src="/texttune.svg" draggable={false} />
 			</Stack>

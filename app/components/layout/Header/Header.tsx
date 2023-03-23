@@ -1,18 +1,18 @@
 import {
 	Flex,
-	Heading,
 	HStack,
 	Image,
-	Text,
+	Link,
 	useColorMode,
 	useEventListener
 } from "@chakra-ui/react";
-import Link from "../../utils/Link";
 import ThemeToggle from "./ToggleTheme";
 import InviteButton from "./InviteButton";
 import { useEffect, useState } from "react";
 import VoteButton from "./VoteButton";
 import Logo from "./Logo";
+import { config } from "../../config/config";
+import { AddIcon } from "@chakra-ui/icons";
 
 export default function Header() {
 	useEventListener("keydown", (event: any) => {
@@ -73,21 +73,27 @@ export default function Header() {
 					<InviteButton />
 				</HStack>
 
-				{/* <Box display={{ base: "flex", lg: "none" }} cursor="pointer">
-					<Menu>
-						{({ isOpen }) => (
-							<>
-								<MenuButton
-									aria-label="Mobile menu button"
-									aria-labelledby="Mobile menu button"
-									boxSize={"20px"}
-								>
-									<HamburgerMenu isOpen={isOpen} />
-								</MenuButton>
-							</>
-						)}
-					</Menu>
-				</Box> */}
+				<HStack spacing={5} display={{ base: "flex", lg: "none" }}>
+					<ThemeToggle />
+					<Link
+						href={config.topggVote}
+						boxSize="40px"
+						display={"flex"}
+						alignItems="center"
+						justifyContent={"center"}
+					>
+						<Image src="/topgg.svg" boxSize={"8"} />
+					</Link>
+					<Link
+						href={config.discordBotInvite}
+						boxSize="40px"
+						display={"flex"}
+						alignItems="center"
+						justifyContent={"center"}
+					>
+						<AddIcon />
+					</Link>
+				</HStack>
 			</Flex>
 		</Flex>
 	);

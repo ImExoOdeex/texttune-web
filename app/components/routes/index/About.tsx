@@ -93,6 +93,11 @@ export default function About() {
 						<Badge>/synonyms </Badge> - provides a comprehensive
 						list of all possible synonyms for any word you enter.
 					</Text>
+
+					<Text>
+						<Badge>/help </Badge> - help command that gives some
+						help if you get stuck.
+					</Text>
 				</VStack>
 			</VStack>
 

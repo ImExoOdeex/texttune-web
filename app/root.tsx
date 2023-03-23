@@ -2,7 +2,8 @@ import {
 	ChakraProvider,
 	Box,
 	Heading,
-	cookieStorageManagerSSR
+	cookieStorageManagerSSR,
+	ChakraBaseProvider
 } from "@chakra-ui/react";
 import {
 	json,
@@ -112,14 +113,15 @@ export default function App() {
 
 	return (
 		<Document>
-			<ChakraProvider
+			<ChakraBaseProvider
+				resetCSS
 				colorModeManager={cookieStorageManagerSSR(cookies)}
 				theme={theme}
 			>
 				<Layout>
 					<Outlet />
 				</Layout>
-			</ChakraProvider>
+			</ChakraBaseProvider>
 		</Document>
 	);
 }

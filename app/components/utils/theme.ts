@@ -1,7 +1,9 @@
 import {
-	extendTheme,
 	type ThemeOverride,
-	type ThemeConfig
+	type ThemeConfig,
+	extendBaseTheme,
+	theme as chakraTheme,
+	mergeThemeOverride
 } from "@chakra-ui/react";
 import { mode, type StyleFunctionProps } from "@chakra-ui/theme-tools";
 import type { Dict } from "@chakra-ui/utils";
@@ -45,8 +47,8 @@ const colors = {
 		"900": "#5D4DB2"
 	},
 	bg: {
-		100: "#ffffff",
-		900: `#0f0f0f`
+		100: "#FDF9F6",
+		900: `#080808`
 	},
 	sec: {
 		100: "#93b8e9",
@@ -57,7 +59,11 @@ const colors = {
 		900: "#6A5ACD"
 	}
 };
-const theme = extendTheme({
+
+const { Button, Link, Heading, Tooltip, Badge, Divider } =
+	chakraTheme.components;
+
+const theme = extendBaseTheme({
 	colors,
 	config,
 	styles,
@@ -126,7 +132,11 @@ const theme = extendTheme({
 		}
 	},
 	components: {
-		Tooltip: {
+		Button,
+		Heading,
+		Badge,
+		Divider,
+		Tooltip: mergeThemeOverride(Tooltip, {
 			baseStyle: {
 				bg: "#1d1d22",
 				"--tooltip-bg": "#1d1d22",
@@ -135,46 +145,8 @@ const theme = extendTheme({
 					bg: "bg.100"
 				}
 			}
-		},
-		Button: {
-			variants: {
-				brand: {
-					bg: "brand.900",
-					color: "whiteAlpha.900",
-					_hover: {
-						bg: "#4d4093ca"
-					},
-					_active: {
-						bg: "#4d4093e6"
-					}
-				},
-				sec: {
-					bg: "sec.900",
-					color: "whiteAlpha.900",
-					_hover: {
-						bg: "#0866b3"
-					},
-					_active: {
-						bg: "#278adb"
-					}
-				}
-			}
-		},
-		IconButton: {
-			variants: {
-				brand: {
-					bg: "brand.900",
-					color: "whiteAlpha.900",
-					_hover: {
-						bg: "#4d4093ca"
-					},
-					_active: {
-						bg: "#4d4093e6"
-					}
-				}
-			}
-		},
-		Link: {
+		}),
+		Link: mergeThemeOverride(Link, {
 			variants: {
 				link: {
 					color: "sec",
@@ -191,7 +163,7 @@ const theme = extendTheme({
 					fontWeight: 600
 				}
 			}
-		}
+		})
 	}
 }) as ThemeOverride;
 
