@@ -18,9 +18,8 @@ const styles = {
 		body: {
 			minH: "100vh",
 			bg: mode("bg.100", "bg.900")(props),
-			overflowY: "scroll"
-
-			// overflowX: "hidden"
+			overflowY: "scroll",
+			"-webkit-tap-highlight-color": "transparent"
 		},
 		th: {
 			color: mode("#393942cc!important", "#dedef1be!important")(props)

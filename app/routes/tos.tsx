@@ -12,6 +12,7 @@ import Link from "~/components/utils/Link";
 export default function tos() {
 	return (
 		<VStack
+			px={4}
 			spacing={"10"}
 			maxW="1000px"
 			w="100%"

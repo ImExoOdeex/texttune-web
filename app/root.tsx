@@ -1,9 +1,8 @@
 import {
-	ChakraProvider,
-	Box,
-	Heading,
 	cookieStorageManagerSSR,
-	ChakraBaseProvider
+	ChakraBaseProvider,
+	useConst,
+	cookieStorageManager
 } from "@chakra-ui/react";
 import {
 	json,
@@ -11,20 +10,14 @@ import {
 	type LoaderFunction,
 	type MetaFunction
 } from "@remix-run/node";
-import {
-	Links,
-	LiveReload,
-	Meta,
-	Outlet,
-	Scripts,
-	ScrollRestoration,
-	useCatch,
-	useLoaderData
-} from "@remix-run/react";
-import { useMemo } from "react";
+import { Outlet, useLoaderData } from "@remix-run/react";
 import Layout from "./components/layout/Layout";
-import { getCookieWithoutDocument } from "./components/utils/helpers/functions/cookiesHelpers";
 import theme from "./components/utils/theme";
+import { Document, DocumentWoLoader } from "./Document";
+import Catch from "./components/layout/boundaries/Catch";
+import Error from "./components/layout/boundaries/Error";
+
+// ------------------------- META -------------------------
 
 export const meta: MetaFunction = () => ({
 	title: "Text Tune | Gramamr discord bot",
@@ -37,6 +30,8 @@ export const meta: MetaFunction = () => ({
 	viewport: "width=device-width,initial-scale=1",
 	author: ".imexoodeex#0528"
 });
+
+// ------------------------- LINKS -------------------------
 
 export const links: LinksFunction = () => {
 	return [
@@ -53,64 +48,17 @@ export const links: LinksFunction = () => {
 	];
 };
 
-function Document({ children }: { children: React.ReactNode; title?: string }) {
-	function getColorMode(cookies: string) {
-		return getCookieWithoutDocument(CHAKRA_COOKIE_COLOR_KEY, cookies);
-	}
-
-	const DEFAULT_COLOR_MODE: "dark" | "light" | null = "dark";
-	const CHAKRA_COOKIE_COLOR_KEY = "chakra-ui-color-mode";
-
-	let { cookies } = useLoaderData();
-	if (typeof document !== "undefined") {
-		cookies = document.cookie;
-	}
-	const colorMode = useMemo(() => {
-		let color = getColorMode(cookies);
-
-		if (!color && DEFAULT_COLOR_MODE) {
-			// eslint-disable-next-line react-hooks/exhaustive-deps
-			cookies += ` ${CHAKRA_COOKIE_COLOR_KEY}=${DEFAULT_COLOR_MODE}`;
-			color = DEFAULT_COLOR_MODE;
-		}
-
-		return color;
-	}, [cookies]);
-
-	return (
-		<html
-			lang="en"
-			{...(colorMode && {
-				"data-theme": colorMode,
-				style: { colorScheme: colorMode }
-			})}
-		>
-			<head>
-				<Meta />
-				<Links />
-			</head>
-			<body
-				{...(colorMode && {
-					className: `chakra-ui-${colorMode}`
-				})}
-			>
-				{children}
-				<ScrollRestoration />
-				<Scripts />
-				<LiveReload />
-			</body>
-		</html>
-	);
-}
+// ------------------------- APP -------------------------
 
 export default function App() {
 	const { cookies } = useLoaderData();
+	const manager = useConst(cookieStorageManagerSSR(cookies));
 
 	return (
 		<Document>
 			<ChakraBaseProvider
 				resetCSS
-				colorModeManager={cookieStorageManagerSSR(cookies)}
+				colorModeManager={manager}
 				theme={theme}
 			>
 				<Layout>
@@ -121,36 +69,40 @@ export default function App() {
 	);
 }
 
+// ------------------------- ROOT LOADER -------------------------
+
 export const loader: LoaderFunction = async ({ request }) => {
 	return json({ cookies: request.headers.get("cookie") ?? "" });
 };
 
-export function CatchBoundary() {
-	const caught = useCatch();
+// ------------------------- CATCH -------------------------
 
+export function CatchBoundary() {
 	return (
-		<Document>
-			<ChakraProvider>
-				<Box>
-					<Heading as="h1" bg="purple.600">
-						[CatchBoundary]: {caught.status} {caught.statusText}
-					</Heading>
-				</Box>
-			</ChakraProvider>
-		</Document>
+		<DocumentWoLoader>
+			<ChakraBaseProvider
+				theme={theme}
+				resetCSS
+				colorModeManager={cookieStorageManager}
+			>
+				<Catch />
+			</ChakraBaseProvider>
+		</DocumentWoLoader>
 	);
 }
 
+// ------------------------- ERROR -------------------------
+
 export function ErrorBoundary({ error }: { error: Error }) {
 	return (
-		<Document>
-			<ChakraProvider>
-				<Box>
-					<Heading as="h1" bg="blue.500">
-						[ErrorBoundary]: There was an error: {error.message}
-					</Heading>
-				</Box>
-			</ChakraProvider>
-		</Document>
+		<DocumentWoLoader>
+			<ChakraBaseProvider
+				theme={theme}
+				resetCSS
+				colorModeManager={cookieStorageManager}
+			>
+				<Error error={error} />
+			</ChakraBaseProvider>
+		</DocumentWoLoader>
 	);
 }

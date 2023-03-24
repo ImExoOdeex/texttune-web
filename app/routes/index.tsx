@@ -28,7 +28,7 @@ export default function Index() {
 
 			<Stats />
 
-			<Flex w="100%">
+			<Flex px={4} w="100%">
 				<Divider px={4} />
 			</Flex>
 

@@ -15,8 +15,9 @@ export default function StrokeHeading({
 		<>
 			<Heading
 				as={"h1"}
+				textAlign="center"
 				fontSize={{ base: "5xl", md: "8xl" }}
-				letterSpacing={"20px"}
+				letterSpacing={{ base: "10px", md: "20px" }}
 				color="transparent"
 				fontFamily={"body"}
 				textTransform={"uppercase"}
