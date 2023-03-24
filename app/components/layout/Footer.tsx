@@ -6,16 +6,18 @@ import {
 	VStack,
 	Flex
 } from "@chakra-ui/react";
+import { useNavigate } from "@remix-run/react";
 import pack from "../../../package.json";
 import Link from "../utils/Link";
 
 export default function Footer() {
+	const navigate = useNavigate();
+
 	return (
 		<Box h={"auto"} as="footer" mt={10}>
 			<Stack
 				py={{ base: 10, md: "unset" }}
 				rounded={"3xl"}
-				mb={10}
 				mt={15}
 				spacing={[7, 10, 20]}
 				direction={{ base: "column", md: "row" }}
@@ -24,7 +26,7 @@ export default function Footer() {
 				alignItems={{ base: "center", md: "start" }}
 				mx="auto"
 			>
-				<Box>
+				<Box pb={5}>
 					<VStack align={{ base: "center", md: "start" }}>
 						<Flex flexDir={"row"}>
 							<Text
@@ -88,6 +90,16 @@ export default function Footer() {
 							userSelect={"none"}
 						>
 							Go to the top
+						</Text>
+						<Text
+							color={"textSec"}
+							transition={"color .2s"}
+							_hover={{ color: "text" }}
+							cursor="pointer"
+							onClick={() => navigate(-1)}
+							userSelect={"none"}
+						>
+							Go back
 						</Text>
 					</VStack>
 

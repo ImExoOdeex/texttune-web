@@ -40,7 +40,7 @@ export default function About() {
 					<Text>
 						You can check the spelling and grammar right clicking on
 						message, then <b>Apps</b> {">"}{" "}
-						<b>Check spelling/grammar</b>
+						<b>Check spelling/grammar</b>.
 					</Text>
 					<Box as="video" rounded={"md"} controls autoPlay>
 						<source src="/discord.mp4" type="video/mp4" />
@@ -110,7 +110,6 @@ export default function About() {
 				initial={{ y: -80, opacity: 0 }}
 				whileInView={{ y: 0, opacity: 1 }}
 				viewport={{ once: true }}
-				// @ts-ignore
 				transition={{ ease: config.ease, duration: 1 }}
 			>
 				<StrokeHeading textTransform={"none"}>

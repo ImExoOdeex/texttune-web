@@ -50,7 +50,7 @@ export default function Stats() {
 			<Stack direction={{ base: "column", md: "row" }} w="100%">
 				{items.map((i) => (
 					<Flex flexDir={"row"} w="100%" key={i.id}>
-						<Flex h="100%" w="2px" bg="text" opacity={0.3} />
+						<Flex h="100%" w="3px" bg="text" opacity={0.15} />
 						<VStack alignItems={"start"} w="100%" p={3} spacing={2}>
 							<Suspense
 								fallback={

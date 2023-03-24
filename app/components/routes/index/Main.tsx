@@ -109,8 +109,9 @@ export default function Main() {
 			</Stack>
 			<motion.div
 				style={{ bottom: "-50px", position: "absolute" }}
-				initial={{ opacity: 0, y: 80 }}
-				animate={{ opacity: 1, y: 0 }}
+				initial={{ y: 80, opacity: 0 }}
+				whileInView={{ y: 0, opacity: 1 }}
+				viewport={{ once: true }}
 				transition={{ ease: config.ease, duration: 1 }}
 			>
 				<StrokeHeading>Explore</StrokeHeading>
