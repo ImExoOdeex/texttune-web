@@ -12,17 +12,20 @@ import { motion } from "framer-motion";
 import { config } from "../../config/config";
 export default function About() {
 	return (
-		<Flex px={4} pos={"relative"} pt={20} w="100%" flexDir={"column"}>
+		<Flex px={4} pos={"relative"} w="100%" flexDir={"column"}>
 			<VStack w="100%" alignItems={"start"} spacing={10}>
 				{/* ------------------------ HELLO ------------------------ */}
 
 				<VStack spacing={3} alignItems="start">
 					<Heading fontSize={"xl"} fontWeight={600}>
-						Hi, I'm bot to help you improve your english skills!
+						Hi, I'm bot to help you improve your english skills or
+						to correct others!
 					</Heading>
 					<Text>
-						Let's get started by showing you some my
-						functionalities.
+						I've been designed to easily check grammar, spelling, or
+						anything else without the need to copy and paste text
+						into Google. So, let's get started by showing you some
+						of my functionalities.
 					</Text>
 				</VStack>
 
@@ -41,7 +44,7 @@ export default function About() {
 					</Text>
 					<Box as="video" rounded={"md"} controls autoPlay>
 						<source src="/discord.mp4" type="video/mp4" />
-						Error Message
+						Your browser does not support videos lmao
 					</Box>
 				</VStack>
 

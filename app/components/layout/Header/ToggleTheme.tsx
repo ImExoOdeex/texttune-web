@@ -63,7 +63,7 @@ export default function ThemeToggle() {
 							colorMode == "light" ? (
 								<MoonIcon
 									_groupHover={{ rotate: "-100deg" }}
-									transition={"transform .4s"}
+									transition={"transform .4s, background .2s"}
 									transform="auto"
 								/>
 							) : (
@@ -72,7 +72,7 @@ export default function ThemeToggle() {
 										rotate: "50deg",
 										scale: 1.05
 									}}
-									transition={"transform .4s"}
+									transition={"transform .4s, background .2s"}
 									transform="auto"
 								/>
 							)

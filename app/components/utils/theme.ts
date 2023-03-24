@@ -19,12 +19,14 @@ const styles = {
 			minH: "100vh",
 			bg: mode("bg.100", "bg.900")(props),
 			overflowY: "scroll"
+
 			// overflowX: "hidden"
 		},
 		th: {
 			color: mode("#393942cc!important", "#dedef1be!important")(props)
 		},
 		html: {
+			"scroll-behavior": "smooth",
 			"*::selection": {
 				backgroundColor: "#4d4093",
 				color: "white"

@@ -67,6 +67,8 @@ export default function Main() {
 								bg={"alpha"}
 								href={config.discordServerInvite}
 								variant={"solid"}
+								transform={"auto-gpu"}
+								_active={{ scale: 0.9 }}
 								_hover={{ textDecor: "none", bg: "alpha100" }}
 							>
 								<HStack spacing={2}>
@@ -80,6 +82,8 @@ export default function Main() {
 								as={Link}
 								rounded="xl"
 								bg={"alpha"}
+								transform={"auto-gpu"}
+								_active={{ scale: 0.9 }}
 								href={config.topggVote}
 								variant={"solid"}
 								_hover={{ textDecor: "none", bg: "alpha100" }}
